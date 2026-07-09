@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Amine ARTs — Graphic Design Services</title>
+<meta name="description" content="Amine ARTs — posters, menus, cards and identity design. Order your design today." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#17140f;
+    --ink-soft:#524c3f;
+    --vellum:#f1eee4;
+    --vellum-deep:#e6e0cf;
+    --card:#fbfaf5;
+    --line:#ddd5bd;
+    --indigo:#2a3b5c;
+    --indigo-soft:#dde2ec;
+    --rubric:#8a2f2a;
+    --radius:16px;
+    --maxw:1180px;
+    --ff-display:'UnifrakturMaguntia', cursive;
+    --ff-sans:'Manrope', sans-serif;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background-color:var(--vellum);
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+    color:var(--ink);
+    font-family:var(--ff-sans);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img{max-width:100%;display:block;}
+  a{color:inherit;}
+  ul{margin:0;padding:0;list-style:none;}
+  h1,h2,h3,p,blockquote,figure{margin:0;}
+  button{font-family:inherit;}
+
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 24px;}
+  @media(min-width:900px){ .wrap{padding:0 40px;} }
+
+  :focus-visible{outline:2px solid var(--indigo); outline-offset:3px;}
+
+  .eyebrow{
+    display:block; text-transform:uppercase; letter-spacing:.16em;
+    font-size:.72rem; font-weight:700; color:var(--ink-soft); margin-bottom:14px;
+  }
+  .section-head{max-width:640px; margin-bottom:48px;}
+  .section-head h2{font-size:clamp(1.9rem, 1.1rem + 2.4vw, 2.7rem); font-weight:800; letter-spacing:-.01em; margin-bottom:14px;}
+  .section-head p{color:var(--ink-soft); font-size:1.05rem; max-width:52ch;}
+
+  section{padding:96px 0;}
+  @media(min-width:900px){ section{padding:128px 0;} }
+
+  /* ---------- divider ---------- */
+  .divider{display:flex; align-items:center; gap:16px; max-width:var(--maxw); margin:0 auto; padding:0 24px;}
+  .divider::before, .divider::after{content:''; flex:1; height:1px; background:var(--line);}
+  .divider span{font-size:.9rem; color:var(--ink-soft); opacity:.6;}
+
+  /* ---------- reveal on scroll ---------- */
+  .reveal{opacity:0; transform:translateY(28px); transition:opacity .8s ease, transform .8s ease;}
+  .reveal.is-visible{opacity:1; transform:translateY(0);}
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal{opacity:1; transform:none; transition:none;}
+  }
+
+  /* ================= HERO ================= */
+  .hero{
+    min-height:100svh;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    text-align:center; padding:120px 24px 64px; position:relative;
+  }
+  .hero-mark{font-size:.95rem; letter-spacing:.3em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:28px;}
+  .hero h1{
+    font-family:var(--ff-display); font-weight:400;
+    font-size:clamp(2.9rem, 8vw + 1.4rem, 8.2rem);
+    line-height:1.05; color:var(--ink); margin:0 0 20px;
+  }
+  .hero-tag{font-size:clamp(1rem, .4vw + .95rem, 1.2rem); color:var(--ink-soft); max-width:38ch; margin:0 auto 44px;}
+  .btn{
+    display:inline-flex; align-items:center; gap:10px;
+    background:var(--ink); color:var(--vellum); border:1px solid var(--ink);
+    padding:16px 30px; border-radius:999px; font-weight:600; font-size:.95rem;
+    text-decoration:none; cursor:pointer; transition:transform .25s ease, background .25s ease;
+  }
+  .btn:hover{ transform:translateY(-2px); background:var(--indigo); border-color:var(--indigo);}
+  .btn-outline{background:transparent; color:var(--ink); border:1px solid var(--ink);}
+  .btn-outline:hover{background:var(--ink); color:var(--vellum);}
+  .hero-scroll{
+    position:absolute; bottom:36px; left:50%; transform:translateX(-50%);
+    font-size:.7rem; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-soft); opacity:.7;
+  }
+
+  /* ================= PORTFOLIO ================= */
+  .p-grid{column-count:1; column-gap:20px;}
+  @media(min-width:640px){ .p-grid{column-count:2;} }
+  @media(min-width:1020px){ .p-grid{column-count:3;} }
+
+  .p-card{
+    position:relative; break-inside:avoid; margin-bottom:20px;
+    border-radius:var(--radius); overflow:hidden; background:var(--ink);
+  }
+  .p-ph{
+    aspect-ratio:var(--ar,4/5); width:100%;
+    background:linear-gradient(155deg, var(--c1,#2a3b5c), var(--c2,#17140f));
+  }
+  .p-overlay{
+    position:absolute; inset:0; display:flex; flex-direction:column; justify-content:flex-end;
+    padding:24px; background:linear-gradient(0deg, rgba(23,20,15,.94), rgba(23,20,15,.1) 65%);
+    opacity:0; transition:opacity .35s ease;
+  }
+  .p-cat{color:var(--vellum); text-transform:uppercase; letter-spacing:.12em; font-size:.7rem; opacity:.75; margin-bottom:6px; display:block;}
+  .p-title{color:var(--vellum); font-weight:700; font-size:1.15rem; margin-bottom:6px;}
+  .p-desc{color:var(--vellum); font-size:.88rem; opacity:.82;}
+  @media (hover:hover) and (pointer:fine){
+    .p-card:hover .p-overlay, .p-card:focus-within .p-overlay{opacity:1;}
+  }
+  @media (hover:none), (pointer:coarse){
+    .p-overlay{opacity:1; position:static; background:none; padding:14px 2px 0;}
+    .p-cat, .p-title{color:var(--ink);}
+    .p-desc{color:var(--ink-soft);}
+  }
+  .p-card:focus-within{ outline:2px solid var(--indigo); outline-offset:3px; }
+
+  .placeholder-note{
+    font-size:.8rem; color:var(--ink-soft); background:var(--indigo-soft); border-radius:10px;
+    padding:10px 14px; margin:8px 0 40px; display:inline-block;
+  }
+
+  /* ---------- before / after ---------- */
+  .ba-block{margin-top:64px;}
+  .ba-label{font-weight:700; margin-bottom:16px; font-size:1.05rem;}
+  .ba-sub{color:var(--ink-soft); font-size:.9rem; margin-bottom:16px; max-width:60ch;}
+  .ba{
+    position:relative; width:100%; aspect-ratio:16/10; border-radius:var(--radius); overflow:hidden;
+    cursor:ew-resize; touch-action:pan-y; background:var(--ink); user-select:none;
+  }
+  .ba-after, .ba-before{position:absolute; inset:0;}
+  .ba-before{clip-path:inset(0 50% 0 0);}
+  .ba-img{width:100%; height:100%; display:flex; align-items:flex-end; padding:18px;}
+  .ba-after .ba-img{justify-content:flex-end;}
+  .ba-tag{
+    background:rgba(23,20,15,.55); color:var(--vellum); font-size:.72rem; text-transform:uppercase;
+    letter-spacing:.1em; padding:6px 12px; border-radius:999px;
+  }
+  .ba-divider{
+    position:absolute; top:0; bottom:0; left:50%; width:0; transform:translateX(-50%);
+    border-left:2px solid var(--vellum);
+  }
+  .ba-grip{
+    position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+    width:42px; height:42px; border-radius:50%; background:var(--vellum);
+    display:flex; align-items:center; justify-content:center; font-size:.9rem; color:var(--ink);
+    box-shadow:0 6px 18px rgba(23,20,15,.3);
+  }
+  .ba-two-col{display:grid; gap:40px; grid-template-columns:1fr;}
+  @media(min-width:860px){ .ba-two-col{grid-template-columns:1fr 1fr;} }
+
+  /* ================= PRICING ================= */
+  .pricing-top{display:flex; flex-direction:column; gap:28px; margin-bottom:56px;}
+  @media(min-width:700px){ .pricing-top{flex-direction:row; align-items:flex-end; justify-content:space-between;} }
+
+  .toggle{
+    display:inline-flex; background:var(--vellum-deep); border-radius:999px; padding:5px; gap:2px;
+    position:relative; align-self:flex-start;
+  }
+  .toggle button{
+    position:relative; z-index:1; border:0; background:transparent; padding:12px 22px;
+    border-radius:999px; font-weight:700; font-size:.85rem; color:var(--ink-soft); cursor:pointer;
+    transition:color .3s ease;
+  }
+  .toggle button.is-active{color:var(--vellum);}
+  .toggle .thumb{
+    position:absolute; top:5px; left:5px; bottom:5px; width:calc(50% - 5px);
+    background:var(--ink); border-radius:999px; transition:transform .35s cubic-bezier(.4,0,.2,1); z-index:0;
+  }
+  .toggle[data-mode="print"] .thumb{transform:translateX(100%);}
+  @media(max-width:420px){
+    .toggle button{padding:10px 13px; font-size:.76rem;}
+  }
+
+  .tiers{display:grid; gap:24px; grid-template-columns:1fr;}
+  @media(min-width:860px){ .tiers{grid-template-columns:repeat(3,1fr); align-items:start;} }
+
+  .tier{
+    background:var(--card); border:1px solid var(--line); border-radius:20px;
+    padding:34px 28px; display:flex; flex-direction:column; gap:22px;
+  }
+  .tier-name{font-size:1.3rem; font-weight:800;}
+  .tier-desc{color:var(--ink-soft); font-size:.92rem;}
+  .price-original{color:var(--rubric); text-decoration:line-through; font-size:.95rem; margin-right:10px; opacity:.8;}
+  .price-current{font-size:1.9rem; font-weight:800;}
+  .tier-features{display:flex; flex-direction:column; gap:10px; font-size:.92rem;}
+  .tier-features li{display:flex; gap:10px; align-items:flex-start;}
+  .tier-features li::before{content:'—'; color:var(--ink-soft); flex-shrink:0;}
+  .tier-cta{
+    margin-top:auto; text-align:center; padding:14px; border-radius:999px; border:1px solid var(--ink);
+    font-weight:700; font-size:.9rem; text-decoration:none;
+  }
+
+  .tier.is-standard{
+    background:var(--ink); color:var(--vellum); border:1px solid var(--indigo);
+    box-shadow:0 24px 60px -24px rgba(23,20,15,.4);
+  }
+  @media(min-width:860px){ .tier.is-standard{ transform:translateY(-18px); padding:42px 28px;} }
+  .tier.is-standard .tier-desc{color:rgba(241,238,229,.72);}
+  .tier.is-standard .price-original{color:#c98b83;}
+  .tier.is-standard .tier-features li::before{color:rgba(241,238,229,.6);}
+  .tier.is-standard .tier-cta{background:var(--vellum); color:var(--ink); border-color:var(--vellum);}
+  .tier-badge{
+    align-self:flex-start; background:var(--indigo); color:var(--vellum); font-size:.68rem;
+    text-transform:uppercase; letter-spacing:.1em; font-weight:700; padding:6px 12px; border-radius:999px;
+  }
+  .tier-testimonial{
+    border-left:2px solid rgba(241,238,229,.3); padding-left:14px; font-size:.88rem;
+    font-style:italic; color:rgba(241,238,229,.85);
+  }
+  .tier-testimonial cite{display:block; margin-top:8px; font-style:normal; font-size:.78rem; opacity:.7;}
+
+  .pricing-foot{
+    margin-top:36px; display:flex; flex-direction:column; gap:6px; align-items:center; text-align:center;
+  }
+  .scarcity{font-size:.88rem; color:var(--rubric); font-weight:700;}
+  .pricing-note{font-size:.82rem; color:var(--ink-soft);}
+
+  /* ================= FAQ ================= */
+  .faq-list{max-width:760px;}
+  .faq-item{border-bottom:1px solid var(--line);}
+  .faq-q{
+    width:100%; text-align:left; background:none; border:0; padding:22px 4px;
+    display:flex; justify-content:space-between; align-items:center; gap:16px;
+    font-size:1.02rem; font-weight:700; cursor:pointer; color:var(--ink);
+  }
+  .faq-icon{flex-shrink:0; width:22px; height:22px; position:relative;}
+  .faq-icon::before, .faq-icon::after{
+    content:''; position:absolute; background:var(--ink); top:50%; left:50%; transform:translate(-50%,-50%);
+    transition:transform .3s ease, opacity .3s ease;
+  }
+  .faq-icon::before{width:14px; height:2px;}
+  .faq-icon::after{width:2px; height:14px;}
+  .faq-item.is-open .faq-icon::after{opacity:0; transform:translate(-50%,-50%) rotate(90deg);}
+  .faq-a{
+    display:grid; grid-template-rows:0fr; transition:grid-template-rows .35s ease;
+  }
+  .faq-item.is-open .faq-a{grid-template-rows:1fr;}
+  .faq-a-inner{overflow:hidden;}
+  .faq-a p{padding:0 4px 22px; color:var(--ink-soft); font-size:.95rem; max-width:62ch;}
+
+  /* ================= CONTACT ================= */
+  .contact-grid{display:grid; gap:56px; grid-template-columns:1fr;}
+  @media(min-width:900px){ .contact-grid{grid-template-columns:0.85fr 1.15fr;} }
+
+  .contact-info h2{font-size:clamp(1.9rem,1.1rem + 2.4vw,2.6rem); font-weight:800; margin-bottom:16px;}
+  .contact-info p{color:var(--ink-soft); margin-bottom:28px; max-width:44ch;}
+  .payment-note{
+    background:var(--vellum-deep); border-radius:14px; padding:20px 22px; font-size:.9rem; color:var(--ink-soft);
+  }
+  .payment-note strong{color:var(--ink); display:block; margin-bottom:6px; font-size:.85rem; text-transform:uppercase; letter-spacing:.08em;}
+
+  .field{margin-bottom:20px;}
+  .field label{display:block; font-size:.85rem; font-weight:700; margin-bottom:8px;}
+  .field input, .field select, .field textarea{
+    width:100%; padding:14px 16px; border-radius:10px; border:1px solid var(--line);
+    background:var(--card); font:inherit; color:var(--ink); font-size:.95rem;
+  }
+  .field textarea{resize:vertical; min-height:110px;}
+  .field input:focus, .field select:focus, .field textarea:focus{outline:2px solid var(--indigo); outline-offset:2px;}
+  .field-row{display:grid; gap:20px; grid-template-columns:1fr;}
+  @media(min-width:560px){ .field-row{grid-template-columns:1fr 1fr;} }
+  .form-submit{width:100%; border:0; margin-top:6px;}
+  .form-note{font-size:.78rem; color:var(--ink-soft); margin-top:14px;}
+
+  /* ================= FOOTER ================= */
+  footer{padding:48px 0; border-top:1px solid var(--line);}
+  .foot-row{display:flex; flex-direction:column; gap:16px; align-items:center; text-align:center;}
+  @media(min-width:700px){ .foot-row{flex-direction:row; justify-content:space-between; text-align:left;} }
+  .foot-mark{font-family:var(--ff-display); font-size:1.6rem;}
+  .foot-copy{font-size:.8rem; color:var(--ink-soft);}
+</style>
+</head>
+<body>
+
+  <!-- ================= HERO ================= -->
+  <header class="hero">
+    <span class="hero-mark">aa. — atelier</span>
+    <h1>Amine ARTs</h1>
+    <p class="hero-tag">Custom posters, menus and brand design — made with intention.</p>
+    <a href="#portfolio" class="btn">See Our Services</a>
+    <span class="hero-scroll">Scroll</span>
+  </header>
+
+  <div class="divider"><span>❖</span></div>
+
+  <!-- ================= PORTFOLIO ================= -->
+  <main>
+  <section id="portfolio">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Portfolio</span>
+        <h2>Selected work</h2>
+        <p>A sample of recent posters, menus and cards. Replace these placeholders with your own project photography.</p>
+      </div>
+
+      <div class="p-grid reveal">
+        <article class="p-card" tabindex="0">
+          <div class="p-ph" style="--ar:4/5; --c1:#2a3b5c; --c2:#17140f;"></div>
+          <div class="p-overlay">
+            <span class="p-cat">Poster</span>
+            <h3 class="p-title">Oran — Coastal Heritage</h3>
+            <p class="p-desc">A tribute to Oran's seaside identity, bold type over coastal motifs.</p>
+          </div>
+        </article>
+
+        <article class="p-card" tabindex="0">
+          <div class="p-ph" style="--ar:3/4; --c1:#8a2f2a; --c2:#17140f;"></div>
+          <div class="p-overlay">
+            <span class="p-cat">Poster</span>
+            <h3 class="p-title">Mahrez — Road to FIFA 26</h3>
+            <p class="p-desc">Fan-tribute poster celebrating Algeria's captain ahead of the tournament.</p>
+          </div>
+        </article>
+
+        <article class="p-card" tabindex="0">
+          <div class="p-ph" style="--ar:5/4; --c1:#4a4438; --c2:#17140f;"></div>
+          <div class="p-overlay">
+            <span class="p-cat">Menu</span>
+            <h3 class="p-title">La Perle Bleue — Menu Redesign</h3>
+            <p class="p-desc">Full menu overhaul balancing readability with restaurant identity.</p>
+          </div>
+        </article>
+
+        <article class="p-card" tabindex="0">
+          <div class="p-ph" style="--ar:4/5; --c1:#2a3b5c; --c2:#4a4438;"></div>
+          <div class="p-overlay">
+            <span class="p-cat">Poster</span>
+            <h3 class="p-title">Sétif Nights — Event Poster</h3>
+            <p class="p-desc">Promotional poster for a local cultural event.</p>
+          </div>
+        </article>
+
+        <article class="p-card" tabindex="0">
+          <div class="p-ph" style="--ar:4/3; --c1:#17140f; --c2:#8a2f2a;"></div>
+          <div class="p-overlay">
+            <span class="p-cat">Branding</span>
+            <h3 class="p-title">Atlas Café — Business Card</h3>
+            <p class="p-desc">Minimal business card system for a local café brand.</p>
+          </div>
+        </article>
+
+        <article class="p-card" tabindex="0">
+          <div class="p-ph" style="--ar:5/6; --c1:#4a4438; --c2:#2a3b5c;"></div>
+          <div class="p-overlay">
+            <span class="p-cat">Card</span>
+            <h3 class="p-title">Ramadan Greetings</h3>
+            <p class="p-desc">Custom seasonal greeting card design.</p>
+          </div>
+        </article>
+      </div>
+      <span class="placeholder-note">Portfolio images above are placeholders — swap each .p-ph block for an &lt;img&gt;.</span>
+
+      <!-- BEFORE / AFTER -->
+      <div class="ba-two-col">
+        <div class="ba-block reveal">
+          <div class="ba-label">Poster redesign</div>
+          <p class="ba-sub">Drag to compare — original brief vs. final direction.</p>
+          <div class="ba" data-ba>
+            <div class="ba-after">
+              <div class="ba-img" style="background:linear-gradient(155deg,#2a3b5c,#17140f);"><span class="ba-tag">After</span></div>
+            </div>
+            <div class="ba-before">
+              <div class="ba-img" style="background:linear-gradient(155deg,#d8d2bd,#a9a186);"><span class="ba-tag" style="color:#17140f; background:rgba(241,238,229,.7);">Before</span></div>
+            </div>
+            <div class="ba-divider"><div class="ba-grip">↔</div></div>
+          </div>
+        </div>
+
+        <div class="ba-block reveal">
+          <div class="ba-label">Menu redesign</div>
+          <p class="ba-sub">Drag to compare — original layout vs. redesigned menu.</p>
+          <div class="ba" data-ba>
+            <div class="ba-after">
+              <div class="ba-img" style="background:linear-gradient(155deg,#8a2f2a,#17140f);"><span class="ba-tag">After</span></div>
+            </div>
+            <div class="ba-before">
+              <div class="ba-img" style="background:linear-gradient(155deg,#d8d2bd,#a9a186);"><span class="ba-tag" style="color:#17140f; background:rgba(241,238,229,.7);">Before</span></div>
+            </div>
+            <div class="ba-divider"><div class="ba-grip">↔</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"><span>❖</span></div>
+
+  <!-- ================= PRICING ================= -->
+  <section id="pricing">
+    <div class="wrap">
+      <div class="pricing-top">
+        <div class="section-head reveal" style="margin-bottom:0;">
+          <span class="eyebrow">Pricing</span>
+          <h2>Simple packages</h2>
+          <p>Pick a tier, pick a mode. Prices update instantly.</p>
+        </div>
+        <div class="toggle reveal" data-mode="design" role="group" aria-label="Pricing mode">
+          <span class="thumb"></span>
+          <button type="button" class="is-active" data-mode-btn="design">Design Only</button>
+          <button type="button" data-mode-btn="print">Design + Print</button>
+        </div>
+      </div>
+
+      <div class="tiers reveal">
+        <div class="tier">
+          <h3 class="tier-name">Basic</h3>
+          <p class="tier-desc">For simple, single-use designs.</p>
+          <div class="price" data-original-design="10,000 DA" data-price-design="7,000 DA" data-original-print="15,000 DA" data-price-print="11,000 DA">
+            <span class="price-original">10,000 DA</span>
+            <span class="price-current">7,000 DA</span>
+          </div>
+          <ul class="tier-features">
+            <li>1 initial concept</li>
+            <li>2 rounds of revisions</li>
+            <li>Digital files (PNG, JPG)</li>
+            <li>3-day delivery</li>
+          </ul>
+          <a href="#contact" class="tier-cta">Choose Basic</a>
+        </div>
+
+        <div class="tier is-standard">
+          <span class="tier-badge">Most chosen</span>
+          <h3 class="tier-name">Standard</h3>
+          <p class="tier-desc">Balanced scope and turnaround.</p>
+          <div class="price" data-original-design="19,000 DA" data-price-design="14,000 DA" data-original-print="28,000 DA" data-price-print="21,000 DA">
+            <span class="price-original">19,000 DA</span>
+            <span class="price-current">14,000 DA</span>
+          </div>
+          <blockquote class="tier-testimonial">
+            "Amine understood exactly what our menu needed — clean, modern, true to our brand."
+            <cite>— R. Belkacem</cite>
+          </blockquote>
+          <ul class="tier-features">
+            <li>2 initial concepts</li>
+            <li>4 rounds of revisions</li>
+            <li>Source files included</li>
+            <li>Social media resized kit</li>
+            <li>5-day delivery</li>
+          </ul>
+          <a href="#contact" class="tier-cta">Choose Standard</a>
+        </div>
+
+        <div class="tier">
+          <h3 class="tier-name">Premium</h3>
+          <p class="tier-desc">Full-scope projects and brand work.</p>
+          <div class="price" data-original-design="30,000 DA" data-price-design="23,000 DA" data-original-print="42,000 DA" data-price-print="32,000 DA">
+            <span class="price-original">30,000 DA</span>
+            <span class="price-current">23,000 DA</span>
+          </div>
+          <ul class="tier-features">
+            <li>3 initial concepts</li>
+            <li>Unlimited revisions</li>
+            <li>Source + print-ready files</li>
+            <li>Mini brand guide</li>
+            <li>2-day priority delivery</li>
+          </ul>
+          <a href="#contact" class="tier-cta">Choose Premium</a>
+        </div>
+      </div>
+
+      <div class="pricing-foot reveal">
+        <span class="scarcity">Only 3 spots left at this price this month.</span>
+        <span class="pricing-note">All prices in Algerian Dinar (DA). Placeholder figures — update to your real rates.</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"><span>❖</span></div>
+
+  <!-- ================= FAQ ================= -->
+  <section id="faq">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">FAQ</span>
+        <h2>Common questions</h2>
+      </div>
+
+      <div class="faq-list reveal">
+        <div class="faq-item is-open">
+          <button class="faq-q" aria-expanded="true">
+            What's included in the price?
+            <span class="faq-icon"></span>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner"><p>Each tier lists its concepts, revision rounds and file formats above — Basic covers a single concept for simple needs, Standard and Premium add more concepts, revisions and source files for larger projects.</p></div></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            How does payment work?
+            <span class="faq-icon"></span>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner"><p>50% upfront to start the project, the remaining 50% on delivery before final files are sent. Pay by BaridiMob, CCP transfer, or cash on delivery for local pickup — no card needed.</p></div></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            How long will my design take?
+            <span class="faq-icon"></span>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner"><p>Basic ships in 3 days, Standard in 5, and Premium is prioritised for 2-day turnaround. Rush timelines are available on request.</p></div></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can I get physical prints, not just digital files?
+            <span class="faq-icon"></span>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner"><p>Yes — switch the pricing table to "Design + Print" above and printed posters, menus or cards are delivered ready to use.</p></div></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            What if I don't love the first draft?
+            <span class="faq-icon"></span>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner"><p>Revisions are built into every plan, and direction is checked with you throughout so the final delivery isn't a surprise.</p></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"><span>❖</span></div>
+
+  <!-- ================= CONTACT ================= -->
+  <section id="contact">
+    <div class="wrap">
+      <div class="contact-grid">
+        <div class="contact-info reveal">
+          <span class="eyebrow">Start an order</span>
+          <h2>Tell me about your project</h2>
+          <p>Share a few details below and I'll get back to you to confirm scope and timeline.</p>
+          <div class="payment-note">
+            <strong>Payment</strong>
+            No card required — pay via BaridiMob, CCP transfer, or cash on delivery.
+          </div>
+        </div>
+
+        <form class="contact-form reveal" id="orderForm">
+          <div class="field-row">
+            <div class="field">
+              <label for="name">Full name</label>
+              <input type="text" id="name" name="name" required>
+            </div>
+            <div class="field">
+              <label for="contact">Phone or email</label>
+              <input type="text" id="contact" name="contact" required>
+            </div>
+          </div>
+          <div class="field">
+            <label for="service">Service</label>
+            <select id="service" name="service">
+              <option>Poster</option>
+              <option>Menu</option>
+              <option>Business card</option>
+              <option>Logo / branding</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="details">Project details</label>
+            <textarea id="details" name="details" placeholder="What are you looking for?" required></textarea>
+          </div>
+          <button type="submit" class="btn form-submit">Send Request</button>
+          <p class="form-note">This opens your email app with the details pre-filled. Connect a form backend later to collect submissions directly.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+  </main>
+
+  <footer>
+    <div class="wrap foot-row">
+      <span class="foot-mark">aa.</span>
+      <span class="foot-copy">© 2026 Amine ARTs — Design services, Algeria.</span>
+    </div>
+  </footer>
+
+<script>
+  // ---------- scroll reveal ----------
+  var revealEls = document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('is-visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, {threshold:0.12});
+    revealEls.forEach(function(el){ io.observe(el); });
+  } else {
+    revealEls.forEach(function(el){ el.classList.add('is-visible'); });
+  }
+
+  // ---------- pricing toggle ----------
+  var toggle = document.querySelector('.toggle');
+  var modeButtons = document.querySelectorAll('[data-mode-btn]');
+  var priceBlocks = document.querySelectorAll('.price');
+
+  function setMode(mode){
+    toggle.setAttribute('data-mode', mode);
+    modeButtons.forEach(function(btn){
+      btn.classList.toggle('is-active', btn.getAttribute('data-mode-btn') === mode);
+    });
+    priceBlocks.forEach(function(block){
+      var original = mode === 'design' ? block.getAttribute('data-original-design') : block.getAttribute('data-original-print');
+      var current = mode === 'design' ? block.getAttribute('data-price-design') : block.getAttribute('data-price-print');
+      block.querySelector('.price-original').textContent = original;
+      block.querySelector('.price-current').textContent = current;
+    });
+  }
+  modeButtons.forEach(function(btn){
+    btn.addEventListener('click', function(){ setMode(btn.getAttribute('data-mode-btn')); });
+  });
+
+  // ---------- before / after sliders ----------
+  document.querySelectorAll('[data-ba]').forEach(function(ba){
+    var before = ba.querySelector('.ba-before');
+    var divider = ba.querySelector('.ba-divider');
+    var dragging = false;
+
+    function setPosition(clientX){
+      var rect = ba.getBoundingClientRect();
+      var pct = ((clientX - rect.left) / rect.width) * 100;
+      pct = Math.max(0, Math.min(100, pct));
+      before.style.clipPath = 'inset(0 ' + (100 - pct) + '% 0 0)';
+      divider.style.left = pct + '%';
+      divider.setAttribute('aria-valuenow', Math.round(pct));
+    }
+
+    ba.addEventListener('pointerdown', function(e){
+      dragging = true;
+      ba.setPointerCapture(e.pointerId);
+      setPosition(e.clientX);
+    });
+    ba.addEventListener('pointermove', function(e){
+      if(!dragging) return;
+      setPosition(e.clientX);
+    });
+    ba.addEventListener('pointerup', function(e){
+      dragging = false;
+      if(ba.hasPointerCapture(e.pointerId)) ba.releasePointerCapture(e.pointerId);
+    });
+    ba.addEventListener('pointercancel', function(){ dragging = false; });
+
+    divider.setAttribute('tabindex', '0');
+    divider.setAttribute('role', 'slider');
+    divider.setAttribute('aria-label', 'Before and after comparison');
+    divider.setAttribute('aria-valuemin', '0');
+    divider.setAttribute('aria-valuemax', '100');
+    divider.setAttribute('aria-valuenow', '50');
+    divider.addEventListener('keydown', function(e){
+      var current = parseFloat(divider.style.left) || 50;
+      if(e.key === 'ArrowLeft'){ current = Math.max(0, current - 5); }
+      else if(e.key === 'ArrowRight'){ current = Math.min(100, current + 5); }
+      else { return; }
+      e.preventDefault();
+      before.style.clipPath = 'inset(0 ' + (100 - current) + '% 0 0)';
+      divider.style.left = current + '%';
+      divider.setAttribute('aria-valuenow', Math.round(current));
+    });
+  });
+
+  // ---------- FAQ accordion ----------
+  document.querySelectorAll('.faq-q').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var item = btn.closest('.faq-item');
+      var open = item.classList.toggle('is-open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  });
+
+  // ---------- contact form (mailto fallback, no backend) ----------
+  var form = document.getElementById('orderForm');
+  if(form){
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var data = new FormData(form);
+      var subject = encodeURIComponent('New order — Amine ARTs');
+      var body = encodeURIComponent(
+        'Name: ' + data.get('name') + '\n' +
+        'Contact: ' + data.get('contact') + '\n' +
+        'Service: ' + data.get('service') + '\n' +
+        'Details: ' + data.get('details')
+      );
+      window.location.href = 'mailto:hello@amine-arts.example?subject=' + subject + '&body=' + body;
+    });
+  }
+</script>
+</body>
+</html>
